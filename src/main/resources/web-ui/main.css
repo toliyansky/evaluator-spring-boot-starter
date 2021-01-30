@@ -1,0 +1,54 @@
+.eval-button {
+    background-color: #365880;
+    color: #bbbbbb;
+    font-weight: bold;
+    margin: 5px;
+    border-color: #496d8a;
+    border-style: solid;
+}
+
+.eval-button:focus {
+    outline: none;
+}
+
+.eval-button:active {
+    border-color: #365880;
+}
+
+.help-button {
+    background-color: #3c3f41;
+    color: #bbbbbb;
+    font-weight: bold;
+    margin: 5px;
+    border-radius: 100%;
+    border-style: solid;
+}
+
+.help-button:focus {
+    outline: none;
+}
+
+.help-button:active {
+    border-color: #365880;
+}
+
+.grey-text {
+    right: auto;
+    float: right;
+    margin: 5px;
+    color: #bbbbbb;
+    text-decoration: none;
+}
+
+.editor {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+}
+
+.result-viewer {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+}

@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "evaluator.enabled",
+      "type": "java.lang.String",
+      "description": "Enable/Disable code evaluator. May be true or false."
+    },
+    {
+      "name": "evaluator.web.ui.enabled",
+      "type": "java.lang.String",
+      "description": "Enable/Disable web UI on route /eval."
+    }
+  ]
+}
