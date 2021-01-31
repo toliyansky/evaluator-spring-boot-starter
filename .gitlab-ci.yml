@@ -1,6 +1,16 @@
 stages:
   - build
+  - test
   - deploy
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+code_quality:
+  variables:
+    REPORT_FORMAT: html
+  artifacts:
+    paths: [gl-code-quality-report.html]
 
 maven-build:
   image: maven:3.6.3-openjdk-15-slim
