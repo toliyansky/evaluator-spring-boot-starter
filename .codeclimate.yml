@@ -2,3 +2,5 @@ version: "2"
 plugins:
   sonar-java:
     enabled: true
+exclude_patterns:
+  - "src/main/resources/web-ui/ace*"
