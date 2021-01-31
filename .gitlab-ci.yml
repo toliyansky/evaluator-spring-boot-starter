@@ -10,7 +10,7 @@ code_quality:
   variables:
     REPORT_FORMAT: html
   artifacts:
-    paths: [gl-code-quality-report.html]
+    paths: [gl-code-quality-report.json, gl-code-quality-report.html]
 
 maven-build:
   image: maven:3.6.3-openjdk-15-slim
