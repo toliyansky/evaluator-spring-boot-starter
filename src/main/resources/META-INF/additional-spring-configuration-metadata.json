@@ -8,7 +8,7 @@
     {
       "name": "evaluator.web.ui.enabled",
       "type": "java.lang.String",
-      "description": "Enable/Disable web UI on route /eval."
+      "description": "Enable/Disable web UI on route /eval. May be true or false."
     }
   ]
 }
