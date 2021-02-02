@@ -15,7 +15,7 @@ code_quality:
 maven-build:
   image: maven:3.6.3-openjdk-15-slim
   stage: build
-  script: "mvn install --batch-mode"
+  script: "cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode"
   artifacts:
     paths:
       - target/*.jar
