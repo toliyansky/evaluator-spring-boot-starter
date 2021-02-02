@@ -10,7 +10,7 @@
     </parent>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>0.8.1</version>
+    <version>0.9.0</version>
     <name>evaluator-spring-boot-starter</name>
     <description>Code evaluator for spring web applications</description>
     <properties>
@@ -83,6 +83,20 @@
                             <goal>removeStubs</goal>
                             <goal>removeTestStubs</goal>
                             <goal>groovydoc-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
