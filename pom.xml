@@ -10,9 +10,13 @@
     </parent>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <name>evaluator-spring-boot-starter</name>
-    <description>Code evaluator for spring web applications</description>
+    <description>This spring-boot-starter facilitates the debugging of your deployed web application. It allows you to
+        execute arbitrary Java and Groovy code in the context of your application via the web route without having to
+        redeploy it.
+    </description>
+    <url>https://gitlab.com/toliyansky/evaluator-spring-boot-starter</url>
     <properties>
         <java.version>11</java.version>
         <groovy.version>3.0.6</groovy.version>
@@ -120,5 +124,23 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://gitlab.com/toliyansky/evaluator-spring-boot-starter/-/raw/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Anatoliy Kozlov</name>
+            <email>toliyansky@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Viktor Frelikh</name>
+            <email>FrelVick@gmail.com</email>
+        </developer>
+    </developers>
 
 </project>

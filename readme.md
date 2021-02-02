@@ -17,7 +17,7 @@ This spring-boot-starter facilitates the debugging of your deployed web applicat
 <dependency>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
