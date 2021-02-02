@@ -82,6 +82,7 @@
                             <goal>compileTests</goal>
                             <goal>removeStubs</goal>
                             <goal>removeTestStubs</goal>
+                            <goal>groovydoc-jar</goal>
                         </goals>
                     </execution>
                 </executions>
