@@ -23,12 +23,20 @@ maven-build:
     - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode
   artifacts:
     paths:
-      - target/*.jar
+      - target/*
+  only:
+    - master
 
 deploy-to-sonatype:
   image: maven:3.6.3-openjdk-15-slim
   stage: deploy
   script:
-    - echo "test"
+    - apt update
+    - apt install -y gnupg
+    - cat $MAVEN_SIGN | base64 -d >> /root/.m2/mvn_sign.key && gpg --batch --import /root/.m2/mvn_sign.key
+    - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn deploy --batch-mode
+  artifacts:
+    paths:
+      - target/*
   only:
     - release
