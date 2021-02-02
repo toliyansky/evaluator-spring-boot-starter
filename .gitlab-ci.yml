@@ -10,12 +10,16 @@ code_quality:
   variables:
     REPORT_FORMAT: html
   artifacts:
-    paths: [gl-code-quality-report.html]
+    paths: [ gl-code-quality-report.html ]
 
 maven-build:
   image: maven:3.6.3-openjdk-15-slim
   stage: build
-  script: "cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode"
+  # TODO: create image inherited from maven with installed gnupg
+  script:
+    - apt update
+    - apt install -y gnupg
+    - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode
   artifacts:
     paths:
       - target/*.jar
