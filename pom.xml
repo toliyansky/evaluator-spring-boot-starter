@@ -10,7 +10,7 @@
     </parent>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>0.9.1</version>
+    <version>1.0.0</version>
     <name>evaluator-spring-boot-starter</name>
     <description>This spring-boot-starter facilitates the debugging of your deployed web application. It allows you to
         execute arbitrary Java and Groovy code in the context of your application via the web route without having to
