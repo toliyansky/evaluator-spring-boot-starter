@@ -1,3 +1,7 @@
+## [1.1.0] - 2021-02-04
+### Added
+- Support new languages: shell, cmd and powershell
+
 ## [1.0.0] - 2021-02-03
 ### Added
 - First release with full prepared CI/CD
