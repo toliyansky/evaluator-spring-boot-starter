@@ -1,7 +1,10 @@
 package dev.toliyansky.eval.controller
 
 import dev.toliyansky.eval.EvaluatorProperties
+import dev.toliyansky.eval.service.CmdService
 import dev.toliyansky.eval.service.GroovyService
+import dev.toliyansky.eval.service.PowerShellService
+import dev.toliyansky.eval.service.ShellService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -30,6 +33,15 @@ class EvalController {
 
     @Autowired
     GroovyService groovyService
+
+    @Autowired
+    ShellService shellService
+
+    @Autowired
+    CmdService cmdService
+
+    @Autowired
+    PowerShellService powerShellService
 
     @PostConstruct
     def init() {
@@ -83,15 +95,33 @@ Request body: string with a valid Groovy script"""
         "kotlin evaluator not implemented yet"
     }
 
-    @SuppressWarnings('unused')
     @GetMapping('/shell')
     def evaluateShellGet(@RequestParam String code) {
-        "shell evaluator not implemented yet"
+        shellService.evaluate(code)
     }
 
-    @SuppressWarnings('unused')
     @PostMapping('/shell')
     def evaluateShellPost(@RequestBody String code) {
-        "shell evaluator not implemented yet"
+        shellService.evaluate(code)
+    }
+
+    @GetMapping('/cmd')
+    def evaluateCmdGet(@RequestParam String code) {
+        cmdService.evaluate(code)
+    }
+
+    @PostMapping('/cmd')
+    def evaluateCmdPost(@RequestBody String code) {
+        cmdService.evaluate(code)
+    }
+
+    @GetMapping('/powershell')
+    def evaluatePowershellGet(@RequestParam String code) {
+        powerShellService.evaluate(code)
+    }
+
+    @PostMapping('/powershell')
+    def evaluatePowershellPost(@RequestBody String code) {
+        powerShellService.evaluate(code)
     }
 }

@@ -1,3 +1,37 @@
+let GROOVY_EXAMPLE_TEXT = `/*
+Examples:
+1) Work with spring application context from your application
+applicationContext
+applicationContext.getBean(SomeBean.class)
+applicationContext.getBean(SomeBean.class).someStateProperty
+applicationContext.getBean(SomeBean.class).someMethod()
+
+2) Work with static variables or methods from your application
+YourSomeClass.someStaticVariable
+YourSomeClass.someStaticMethod()
+
+3) Any valid groovy/java code
+def a = 3;
+def b = 4;
+a * b
+*/
+`
+
+let SHELL_EXAMPLE_TEXT = `# Examples:
+# pwd
+# ls -la
+# curl other.host.domain:port/check-integration
+`
+
+let CMD_EXAMPLE_TEXT = `:: Examples:
+:: dir
+:: mkdir
+`
+let POWERSHELL_EXAMPLE_TEXT = `# Examples:
+# Get-ChildItem
+# Get-Process | Where-Object {$_.ProcessName -eq "java"}
+`
+
 let editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/groovy");
@@ -14,8 +48,10 @@ resultViewer.setOptions({
     readOnly: true
 })
 
+let currentEditorLang = 'groovy';
+
 document.getElementById('eval-button').onclick = function () {
-    fetch('/eval/groovy', {
+    fetch(`/eval/${currentEditorLang}`, {
         method: 'POST',
         body: editor.getValue()
     }).then(function (response) {
@@ -39,26 +75,43 @@ document.getElementById('eval-button').onclick = function () {
 
 document.getElementById('help-button').onclick = function () {
     let currentText = editor.getValue();
-    currentText =
-        `/*
-Examples:
-1) Work with spring application context from your application
-applicationContext
-applicationContext.getBean(SomeBean.class)
-applicationContext.getBean(SomeBean.class).someStateProperty
-applicationContext.getBean(SomeBean.class).someMethod()
-
-2) Work with static variables or methods from your application
-YourSomeClass.someStaticVariable
-YourSomeClass.someStaticMethod()
-
-3) Any valid groovy/java code
-def a = 3;
-def b = 4;
-a * b
-*/
-` + currentText;
+    switch (currentEditorLang) {
+        case 'groovy':
+            currentText = GROOVY_EXAMPLE_TEXT + currentText;
+            break;
+        case 'shell':
+            currentText = SHELL_EXAMPLE_TEXT + currentText;
+            break;
+        case 'cmd':
+            currentText = CMD_EXAMPLE_TEXT + currentText;
+            break;
+        case 'powershell':
+            currentText = POWERSHELL_EXAMPLE_TEXT + currentText;
+            break;
+        default:
+            console.log()
+    }
     editor.setValue(currentText);
     editor.clearSelection();
     editor.moveCursorTo(0, 0);
+}
+
+document.getElementById('lang-select').onchange = function () {
+    currentEditorLang = document.getElementById('lang-select').value;
+    switch (currentEditorLang) {
+        case 'groovy':
+            editor.session.setMode("ace/mode/groovy");
+            break;
+        case 'shell':
+            editor.session.setMode("ace/mode/sh");
+            break;
+        case 'cmd':
+            editor.session.setMode("ace/mode/batchfile");
+            break;
+        case 'powershell':
+            editor.session.setMode("ace/mode/powershell");
+            break;
+        default:
+            editor.session.setMode("ace/mode/text");
+    }
 }

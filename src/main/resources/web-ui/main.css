@@ -52,3 +52,10 @@
     height: 100%;
     left: 50%;
 }
+
+.language-select {
+    background-color: #3c3f41;
+    color: #bbbbbb;
+    font-weight: bold;
+    margin: 5px;
+}
