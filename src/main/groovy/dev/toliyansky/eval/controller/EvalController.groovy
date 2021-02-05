@@ -53,7 +53,7 @@ class EvalController {
     @GetMapping
     def getHtmlPage() {
         return webUiEnabled ? htmlPage : """
-For use WEB-UI you must add property 'evaluator.web.ui.enabled=true' to application.properties.
+For use WEB-UI you must add property 'evaluator.webUiEnabled=true' to application.properties.
 For use HTTP route:
 GET /eval/groovy?code={your code}
 Parameters: {your code} - string with a valid Groovy script, URI encoded.
