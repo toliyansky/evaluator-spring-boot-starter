@@ -17,7 +17,8 @@ class ShellService {
         def scriptFile = new File('eval.sh')
         scriptFile.delete()
         scriptFile.write(code)
-        def process = 'eval.sh'.execute()
+        scriptFile.setExecutable(true)
+        def process = "${scriptFile.absolutePath}".execute()
         process.waitForOrKill(1000)
         process.text
     }

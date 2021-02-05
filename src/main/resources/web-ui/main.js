@@ -27,17 +27,22 @@ let CMD_EXAMPLE_TEXT = `:: Examples:
 :: dir
 :: mkdir
 `
+
 let POWERSHELL_EXAMPLE_TEXT = `# Examples:
 # Get-ChildItem
 # Get-Process | Where-Object {$_.ProcessName -eq "java"}
 `
 
+let START_MESSAGE = `// Write here the code that you want to execute in your application
+// Code examples can be found by click on button with symbol (?)
+`
+
+const EXAMPLES = [GROOVY_EXAMPLE_TEXT, SHELL_EXAMPLE_TEXT, CMD_EXAMPLE_TEXT, POWERSHELL_EXAMPLE_TEXT, START_MESSAGE];
+
 let editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/groovy");
-editor.setValue(`// Write here the groove/java code that you want to execute in your application
-// Code examples can be found by click on button with symbol (?)
-`);
+editor.setValue(START_MESSAGE);
 editor.moveCursorTo(3, 0);
 editor.clearSelection();
 
@@ -74,26 +79,7 @@ document.getElementById('eval-button').onclick = function () {
 }
 
 document.getElementById('help-button').onclick = function () {
-    let currentText = editor.getValue();
-    switch (currentEditorLang) {
-        case 'groovy':
-            currentText = GROOVY_EXAMPLE_TEXT + currentText;
-            break;
-        case 'shell':
-            currentText = SHELL_EXAMPLE_TEXT + currentText;
-            break;
-        case 'cmd':
-            currentText = CMD_EXAMPLE_TEXT + currentText;
-            break;
-        case 'powershell':
-            currentText = POWERSHELL_EXAMPLE_TEXT + currentText;
-            break;
-        default:
-            console.log()
-    }
-    editor.setValue(currentText);
-    editor.clearSelection();
-    editor.moveCursorTo(0, 0);
+    replaceHelpMessages(true);
 }
 
 document.getElementById('lang-select').onchange = function () {
@@ -114,4 +100,33 @@ document.getElementById('lang-select').onchange = function () {
         default:
             editor.session.setMode("ace/mode/text");
     }
+    replaceHelpMessages(false);
+}
+
+function replaceHelpMessages(isNeedAddNewExample) {
+    let currentText = editor.getValue();
+    EXAMPLES.forEach(function (example, i) {
+        currentText = currentText.replaceAll(example, "");
+    });
+    if (isNeedAddNewExample) {
+        switch (currentEditorLang) {
+            case 'groovy':
+                currentText = GROOVY_EXAMPLE_TEXT + currentText;
+                break;
+            case 'shell':
+                currentText = SHELL_EXAMPLE_TEXT + currentText;
+                break;
+            case 'cmd':
+                currentText = CMD_EXAMPLE_TEXT + currentText;
+                break;
+            case 'powershell':
+                currentText = POWERSHELL_EXAMPLE_TEXT + currentText;
+                break;
+            default:
+                console.log()
+        }
+    }
+    editor.setValue(currentText);
+    editor.clearSelection();
+    editor.moveCursorTo(0, 0);
 }

@@ -17,7 +17,7 @@ class PowerShellService {
         def scriptFile = new File('eval.ps1')
         scriptFile.delete()
         scriptFile.write(code)
-        def process = 'powershell.exe -file eval.ps1'.execute()
+        def process = "PowerShell.exe -ExecutionPolicy Bypass -File ${scriptFile.absolutePath}".execute()
         process.waitForOrKill(1000)
         process.text
     }

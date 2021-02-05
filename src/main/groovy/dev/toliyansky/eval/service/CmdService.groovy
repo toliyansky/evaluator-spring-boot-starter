@@ -17,7 +17,7 @@ class CmdService {
         def scriptFile = new File('eval.bat')
         scriptFile.delete()
         scriptFile.write(code)
-        def process = 'eval.bat'.execute()
+        def process = "${scriptFile.absolutePath}".execute()
         process.waitForOrKill(1000)
         process.text
     }

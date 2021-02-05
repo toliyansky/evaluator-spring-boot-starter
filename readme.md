@@ -31,7 +31,7 @@ evaluator.web.ui.enabled=true
 
 ## Usage
 
-1) WEB UI: Use ```http://host:port/eval``` to access the web interface of evaluator with Groovy and JSON syntax higlight
+1) WEB UI: Use ```http://host:port/eval``` to access the web interface of evaluator with syntax highlight
 
 2) API: GET ```http://host:port/eval/{language}?code={your code}```<br>
 Parameters:<br>
