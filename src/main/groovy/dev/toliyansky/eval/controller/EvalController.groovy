@@ -83,13 +83,11 @@ Request body: string with a valid Groovy script"""
         "java evaluator not implemented yet"
     }
 
-    @SuppressWarnings('unused')
     @GetMapping('/kotlin')
     def evaluateKotlinGet(@RequestParam String code) {
         "kotlin evaluator not implemented yet"
     }
 
-    @SuppressWarnings('unused')
     @PostMapping('/kotlin')
     def evaluateKotlinPost(@RequestBody String code) {
         "kotlin evaluator not implemented yet"

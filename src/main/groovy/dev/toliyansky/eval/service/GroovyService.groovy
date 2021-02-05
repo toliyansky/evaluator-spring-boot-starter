@@ -14,7 +14,7 @@ import java.util.function.Supplier
 @Service
 @ConditionalOnWebApplication
 @ConditionalOnProperty(prefix = EvaluatorProperties.PREFIX, name = 'enabled', havingValue = 'true')
-class GroovyService {
+class GroovyService implements EvaluationService {
     private static final def groovyClassLoader = new GroovyClassLoader()
     private static final def EXPRESSION_CLASS_TEMPLATE = """
             package dev.toliyansky.eval.service
@@ -29,6 +29,7 @@ class GroovyService {
     @Autowired
     public ApplicationContext applicationContext
 
+    @Override
     def evaluate(String code) {
         log.debug("Evaluator try execute groovy code: {}", code)
         def finalClassCode = String.format(EXPRESSION_CLASS_TEMPLATE, code)

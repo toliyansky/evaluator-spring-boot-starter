@@ -1,4 +1,8 @@
-## [1.1.0] - 2021-02-04
+## [1.2.0] - In progress
+### Added
+- Kotlin support
+
+## [1.1.0] - 2021-02-06
 ### Added
 - Support new languages: shell, cmd and powershell
 - Add spring-boot-configuration-processor fir highlight properties

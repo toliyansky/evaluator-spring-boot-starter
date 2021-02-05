@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service
 @Service
 @ConditionalOnWebApplication
 @ConditionalOnProperty(prefix = EvaluatorProperties.PREFIX, name = 'enabled', havingValue = 'true')
-class PowerShellService {
+class PowerShellService implements EvaluationService {
     private final def log = LoggerFactory.getLogger(PowerShellService.class)
 
     @Autowired
     EvaluatorProperties evaluatorProperties
 
+    @Override
     def evaluate(String code) {
         log.debug("Evaluator try execute powershell code: {}", code)
         def scriptFile = new File('eval.ps1')
