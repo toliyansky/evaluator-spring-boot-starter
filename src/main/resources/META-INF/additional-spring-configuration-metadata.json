@@ -2,13 +2,18 @@
   "properties": [
     {
       "name": "evaluator.enabled",
-      "type": "java.lang.String",
-      "description": "Enable/Disable code evaluator. May be true or false."
+      "type": "java.lang.Boolean",
+      "description": "Enable/Disable code evaluator."
     },
     {
-      "name": "evaluator.web.ui.enabled",
-      "type": "java.lang.String",
-      "description": "Enable/Disable web UI on route /eval. May be true or false."
+      "name": "evaluator.webUiEnabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable/Disable web UI on route /eval."
+    },
+    {
+      "name": "evaluator.executionTimeoutInMilliseconds",
+      "type": "java.lang.Long",
+      "description": "Code execution timeout in milliseconds."
     }
   ]
 }

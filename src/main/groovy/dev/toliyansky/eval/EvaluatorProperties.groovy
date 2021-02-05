@@ -10,8 +10,10 @@ class EvaluatorProperties {
     public static final def PREFIX = 'evaluator'
 
     @SuppressWarnings('unused')
-    private boolean enabled
+    boolean enabled
 
     @SuppressWarnings('unused')
-    private boolean webUiEnabled
+    boolean webUiEnabled
+
+    long executionTimeoutInMilliseconds
 }

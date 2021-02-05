@@ -1,6 +1,8 @@
 ## [1.1.0] - 2021-02-04
 ### Added
 - Support new languages: shell, cmd and powershell
+- Add spring-boot-configuration-processor fir highlight properties
+- Code execution timeout property
 
 ## [1.0.0] - 2021-02-03
 ### Added

@@ -28,7 +28,7 @@ class EvalController {
     private final def log = LoggerFactory.getLogger(EvalController.class)
     private def htmlPage
 
-    @Value('${evaluator.web.ui.enabled:false}')
+    @Value('${evaluator.webUiEnabled:false}')
     boolean webUiEnabled
 
     @Autowired

@@ -26,7 +26,7 @@ This spring-boot-starter facilitates the debugging of your deployed web applicat
 
 ```properties
 evaluator.enabled=true
-evaluator.web.ui.enabled=true
+evaluator.webUiEnabled=true
 ```
 
 ## Usage
