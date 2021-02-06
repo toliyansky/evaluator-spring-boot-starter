@@ -56,7 +56,6 @@ _request body_ - string with a valid script
 
 In next releases:
 
-- Kotlin
 - Autoformatting of yaml and xml responses in WEB UI
 - Autoformatting/autocompletion of code in WEB UI
 

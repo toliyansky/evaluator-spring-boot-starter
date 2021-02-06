@@ -1,6 +1,5 @@
 ## [1.2.0] - In progress
 ### Added
-- Kotlin support
 
 ## [1.1.0] - 2021-02-06
 ### Added

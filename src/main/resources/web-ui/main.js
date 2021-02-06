@@ -17,14 +17,6 @@ a * b
 */
 `
 
-let KOTLIN_EXAMPLE_TEXT = `/*
-Examples:
-val numbers = mutableListOf("one", "two", "three", "four")
-for (number in numbers)
-    println("num: $number")
-*/
-`
-
 let SHELL_EXAMPLE_TEXT = `# Examples:
 # pwd
 # ls -la
@@ -45,7 +37,7 @@ let START_MESSAGE = `// Write here the code that you want to execute in your app
 // Code examples can be found by click on button with symbol (?)
 `
 
-const EXAMPLES = [GROOVY_EXAMPLE_TEXT, KOTLIN_EXAMPLE_TEXT, SHELL_EXAMPLE_TEXT, CMD_EXAMPLE_TEXT, POWERSHELL_EXAMPLE_TEXT, START_MESSAGE];
+const EXAMPLES = [GROOVY_EXAMPLE_TEXT, SHELL_EXAMPLE_TEXT, CMD_EXAMPLE_TEXT, POWERSHELL_EXAMPLE_TEXT, START_MESSAGE];
 
 let editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
@@ -96,9 +88,6 @@ document.getElementById('lang-select').onchange = function () {
         case 'groovy':
             editor.session.setMode("ace/mode/groovy");
             break;
-        case 'kotlin':
-            editor.session.setMode("ace/mode/kotlin");
-            break;
         case 'shell':
             editor.session.setMode("ace/mode/sh");
             break;
@@ -123,9 +112,6 @@ function replaceHelpMessages(isNeedAddNewExample) {
         switch (currentEditorLang) {
             case 'groovy':
                 currentText = GROOVY_EXAMPLE_TEXT + currentText;
-                break;
-            case 'kotlin':
-                currentText = KOTLIN_EXAMPLE_TEXT + currentText;
                 break;
             case 'shell':
                 currentText = SHELL_EXAMPLE_TEXT + currentText;

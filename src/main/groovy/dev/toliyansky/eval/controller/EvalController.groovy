@@ -83,16 +83,6 @@ Request body: string with a valid Groovy script"""
         "java evaluator not implemented yet"
     }
 
-    @GetMapping('/kotlin')
-    def evaluateKotlinGet(@RequestParam String code) {
-        "kotlin evaluator not implemented yet"
-    }
-
-    @PostMapping('/kotlin')
-    def evaluateKotlinPost(@RequestBody String code) {
-        "kotlin evaluator not implemented yet"
-    }
-
     @GetMapping('/shell')
     def evaluateShellGet(@RequestParam String code) {
         shellService.evaluate(code)
