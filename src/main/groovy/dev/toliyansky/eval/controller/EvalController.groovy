@@ -71,16 +71,14 @@ Request body: string with a valid Groovy script"""
         groovyService.evaluate(code)
     }
 
-    @SuppressWarnings('unused')
     @GetMapping('/java')
     def evaluateJavaGet(@RequestParam String code) {
-        "java evaluator not implemented yet"
+        groovyService.evaluate(code)
     }
 
-    @SuppressWarnings('unused')
     @PostMapping('/java')
     def evaluateJavaPost(@RequestBody String code) {
-        "java evaluator not implemented yet"
+        groovyService.evaluate(code)
     }
 
     @GetMapping('/shell')

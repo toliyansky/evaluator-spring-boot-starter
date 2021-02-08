@@ -17,6 +17,25 @@ a * b
 */
 `
 
+let JAVA_EXAMPLE_TEXT = `/*
+Examples:
+1) Work with spring application context from your application
+applicationContext
+applicationContext.getBean(SomeBean.class)
+applicationContext.getBean(SomeBean.class).someStateProperty
+applicationContext.getBean(SomeBean.class).someMethod()
+
+2) Work with static variables or methods from your application
+YourSomeClass.someStaticVariable
+YourSomeClass.someStaticMethod()
+
+3) Any valid java code
+int a = 3;
+double b = 4.5;
+return a * b;
+*/
+`
+
 let SHELL_EXAMPLE_TEXT = `# Examples:
 # pwd
 # ls -la
@@ -37,7 +56,7 @@ let START_MESSAGE = `// Write here the code that you want to execute in your app
 // Code examples can be found by click on button with symbol (?)
 `
 
-const EXAMPLES = [GROOVY_EXAMPLE_TEXT, SHELL_EXAMPLE_TEXT, CMD_EXAMPLE_TEXT, POWERSHELL_EXAMPLE_TEXT, START_MESSAGE];
+const EXAMPLES = [GROOVY_EXAMPLE_TEXT, JAVA_EXAMPLE_TEXT, SHELL_EXAMPLE_TEXT, CMD_EXAMPLE_TEXT, POWERSHELL_EXAMPLE_TEXT, START_MESSAGE];
 
 let editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
@@ -105,6 +124,9 @@ document.getElementById('lang-select').onchange = function () {
         case 'groovy':
             editor.session.setMode("ace/mode/groovy");
             break;
+        case 'java':
+            editor.session.setMode("ace/mode/java");
+            break;
         case 'shell':
             editor.session.setMode("ace/mode/sh");
             break;
@@ -129,6 +151,9 @@ function replaceHelpMessages(isNeedAddNewExample) {
         switch (currentEditorLang) {
             case 'groovy':
                 currentText = GROOVY_EXAMPLE_TEXT + currentText;
+                break;
+            case 'java':
+                currentText = JAVA_EXAMPLE_TEXT + currentText;
                 break;
             case 'shell':
                 currentText = SHELL_EXAMPLE_TEXT + currentText;

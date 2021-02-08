@@ -46,18 +46,13 @@ _request body_ - string with a valid script
 
 ## Features
 
-- Execution new code in runtime. Support languages:
+- Execution arbitrary code in runtime. Support languages:
     - groovy
     - java (by compatibility via groovy)
     - shell
     - cmd
     - powershell
 - UI with code and response highlight
-
-In next releases:
-
-- Autoformatting of yaml and xml responses in WEB UI
-- Autoformatting/autocompletion of code in WEB UI
 
 ## WEB UI overview
 

@@ -1,5 +1,7 @@
 ## [1.2.0] - In progress
 ### Added
+- Highlight for yaml, xml
+- Java mode for editor
 
 ## [1.1.0] - 2021-02-06
 ### Added
