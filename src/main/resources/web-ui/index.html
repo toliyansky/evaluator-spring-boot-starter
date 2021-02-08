@@ -6,24 +6,35 @@
     <link rel="stylesheet" href="/eval/main.css">
 </head>
 <body style="background-color: #3c3f41; margin: 0">
-<div>
-    <button id="eval-button" class="eval-button">Evaluate</button>
-    <select id="lang-select" class="language-select">
-        <optgroup label="Execute in application context">
-            <option value="groovy">Groovy</option>
-            <option value="java">Groovy - Java highlight</option>
-        </optgroup>
-        <optgroup label="Execute in system context">
-            <option value="shell">Shell</option>
-            <option value="cmd">Cmd</option>
-            <option value="powershell">PowerShell</option>
-        </optgroup>
-    </select>
-    <button id="help-button" class="help-button">?</button>
-    <a class="grey-text" target="_blank" rel="noopener noreferrer"
-       href="https://search.maven.org/artifact/dev.toliyansky/evaluator-spring-boot-starter">1.1.0</a>
-    <a class="grey-text" target="_blank" rel="noopener noreferrer"
-       href="https://gitlab.com/toliyansky/evaluator-spring-boot-starter">Evaluator spring boot starter</a>
+<div style="display: flex">
+    <div>
+        <button id="eval-button" class="eval-button">Evaluate</button>
+    </div>
+    <div>
+        <select id="lang-select" class="language-select">
+            <optgroup label="Execute in application context">
+                <option value="groovy">Groovy</option>
+                <option value="java">Groovy - Java highlight</option>
+            </optgroup>
+            <optgroup label="Execute in system context">
+                <option value="shell">Shell</option>
+                <option value="cmd">Cmd</option>
+                <option value="powershell">PowerShell</option>
+            </optgroup>
+        </select>
+    </div>
+    <div>
+        <button id="help-button" class="help-button">?</button>
+    </div>
+    <div>
+        <img id="loading-spinner" src="/eval/loading.gif" alt=" " style="height: 16px; margin: 5px; display: none;">
+    </div>
+    <div style="width: 100%">
+        <a class="grey-text" target="_blank" rel="noopener noreferrer"
+           href="https://search.maven.org/artifact/dev.toliyansky/evaluator-spring-boot-starter">1.1.0</a>
+        <a class="grey-text" target="_blank" rel="noopener noreferrer"
+           href="https://gitlab.com/toliyansky/evaluator-spring-boot-starter">Evaluator spring boot starter</a>
+    </div>
 </div>
 <div>
     <div id="editor" class="editor"></div>

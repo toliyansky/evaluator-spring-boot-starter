@@ -73,14 +73,18 @@ resultViewer.setOptions({
 })
 
 let currentEditorLang = 'groovy';
+let loadingSpinner = document.getElementById("loading-spinner");
 
 document.getElementById('eval-button').onclick = function () {
+    loadingSpinner.style.display = 'flex';
     fetch(`/eval/${currentEditorLang}`, {
         method: 'POST',
         body: editor.getValue()
     }).then(function (response) {
+        loadingSpinner.style.display = 'none';
         return response.text();
     }).then(function (data) {
+        loadingSpinner.style.display = 'none';
         resultViewer.setValue(data);
         try {
             let jsonData = JSON.parse(data);
@@ -110,6 +114,7 @@ document.getElementById('eval-button').onclick = function () {
             resultViewer.clearSelection();
         }
     }).catch(function () {
+        loadingSpinner.style.display = 'none';
         console.log("Error while handle request");
     });
 }

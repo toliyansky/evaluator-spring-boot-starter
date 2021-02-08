@@ -2,6 +2,7 @@
 ### Added
 - Highlight for yaml, xml
 - Java mode for editor
+- Loading spinner
 
 ## [1.1.0] - 2021-02-06
 ### Added
