@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service
 @Service
 @ConditionalOnWebApplication
 @ConditionalOnProperty(prefix = EvaluatorProperties.PREFIX, name = 'enabled', havingValue = 'true')
-class CmdService implements EvaluationService {
+class CmdService extends EvaluationService {
     private final def log = LoggerFactory.getLogger(CmdService.class)
 
     @Autowired
     EvaluatorProperties evaluatorProperties
 
     @Override
-    def evaluate(String code) {
+    def eval(String code) {
         log.debug("Evaluator try execute cmd code: {}", code)
         def scriptFile = new File('eval.bat')
         scriptFile.delete()

@@ -3,6 +3,7 @@
 - Highlight for yaml, xml
 - Java mode for editor
 - Loading spinner
+- Print exception details in response
 
 ## [1.1.0] - 2021-02-06
 ### Added
