@@ -69,7 +69,24 @@ document.getElementById('eval-button').onclick = function () {
             let formattedText = JSON.stringify(jsonData, null, '\t');
             resultViewer.setValue(formattedText);
         } catch (e) {
-            resultViewer.session.setMode("ace/mode/text");
+            try {
+                let yamlData = jsyaml.load(data);
+                if (typeof yamlData === 'string') {
+                    throw "type of data not yaml";
+                }
+                resultViewer.session.setMode("ace/mode/yaml");
+            } catch (e) {
+                try {
+                    let domParser = new DOMParser();
+                    let xmlData = domParser.parseFromString(data, 'text/xml');
+                    if (xmlData.getElementsByTagName('parsererror').length) {
+                        throw "type of data not xml";
+                    }
+                    resultViewer.session.setMode("ace/mode/xml");
+                } catch (e) {
+                    resultViewer.session.setMode("ace/mode/text");
+                }
+            }
         } finally {
             resultViewer.clearSelection();
         }
