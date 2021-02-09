@@ -76,7 +76,7 @@ cat ./pings/ping.txt
 rm -rf pings
 """
         ResponseEntity<String> result = this.restTemplate.postForEntity("http://localhost:${port}/eval/shell", script, String)
-        assertThat(result.body).contains("Pinging")
+        assertThat(result.body.toLowerCase()).contains("ping 0.0.0.0")
     }
 
 }
