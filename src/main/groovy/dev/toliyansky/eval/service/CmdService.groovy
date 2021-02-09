@@ -24,6 +24,8 @@ class CmdService extends EvaluationService {
         scriptFile.write(code)
         def process = "${scriptFile.absolutePath}".execute()
         process.waitForOrKill(evaluatorProperties.executionTimeoutInMilliseconds)
-        process.text
+        def result = process.text
+        scriptFile.delete()
+        return  result
     }
 }

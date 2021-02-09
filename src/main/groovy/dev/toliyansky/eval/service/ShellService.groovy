@@ -25,6 +25,8 @@ class ShellService extends EvaluationService {
         scriptFile.setExecutable(true)
         def process = "${scriptFile.absolutePath}".execute()
         process.waitForOrKill(evaluatorProperties.executionTimeoutInMilliseconds)
-        process.text
+        def result = process.text
+        scriptFile.delete()
+        return  result
     }
 }

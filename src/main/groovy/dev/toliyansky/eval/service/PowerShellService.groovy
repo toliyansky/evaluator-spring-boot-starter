@@ -24,6 +24,8 @@ class PowerShellService extends EvaluationService {
         scriptFile.write(code)
         def process = "PowerShell.exe -ExecutionPolicy Bypass -File \"${scriptFile.absolutePath}\"".execute()
         process.waitForOrKill(evaluatorProperties.executionTimeoutInMilliseconds)
-        process.text
+        def result = process.text
+        scriptFile.delete()
+        return  result
     }
 }

@@ -1,4 +1,4 @@
 evaluator:
-  enabled: true
-  webUiEnabled: true
+  enabled: false
+  webUiEnabled: false
   executionTimeoutInMilliseconds: 10000

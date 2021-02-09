@@ -36,20 +36,45 @@ return a * b;
 */
 `
 
-let SHELL_EXAMPLE_TEXT = `# Examples:
-# pwd
-# ls -la
-# curl other.host.domain:port/check-integration
+let SHELL_EXAMPLE_TEXT = `: '
+Execute arbitrary shell script in system
+Important: 
+1) This is NOT interactive terminal. This script will be run as shell script.
+2) Every run current directory reset to default.
+Examples:
+pwd
+mkdir pings
+ping 0.0.0.0 -c 4 >> pings/ping.txt
+cat ./pings/ping.txt
+rm -rf pings
+'
 `
 
-let CMD_EXAMPLE_TEXT = `:: Examples:
+let CMD_EXAMPLE_TEXT = `:: Execute arbitrary cmd script in system (for windows only).
+:: Important: 
+:: 1) This is NOT interactive terminal. This script will be run as batch script.
+:: 2) Every run current directory reset to default.
+:: Examples:
 :: dir
-:: mkdir
+:: mkdir pings
+:: ping 0.0.0.0 -n 4 >> pings/ping.txt
+:: cd pings
+:: type ping.txt
+:: del /q ping.txt
 `
 
-let POWERSHELL_EXAMPLE_TEXT = `# Examples:
-# Get-ChildItem
-# Get-Process | Where-Object {$_.ProcessName -eq "java"}
+let POWERSHELL_EXAMPLE_TEXT = `<#
+Execute arbitrary PowerShell script in system (for windows only).
+Important: 
+1) This is NOT interactive terminal. This script will be run as PowerShell script.
+2) Every run current directory reset to default.
+Examples:
+Get-ChildItem
+New-Item -ItemType Directory pings
+ping 0.0.0.0 -n 4 >> pings/ping.txt
+Get-Content pings/ping.txt
+Remove-Item -Force -Recurse pings
+#>
 `
 
 let START_MESSAGE = `// Write here the code that you want to execute in your application
