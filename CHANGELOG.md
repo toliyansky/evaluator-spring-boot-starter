@@ -1,4 +1,4 @@
-## [1.2.0] - In progress
+## [1.2.0] - 2021-02-09
 ### Added
 - Highlight for yaml, xml
 - Java mode for editor
