@@ -18,13 +18,13 @@ For maven project:
 <dependency>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 </dependency>
 ```
 
 For gradle project:
 ```groovy
-implementation 'dev.toliyansky:evaluator-spring-boot-starter:1.2.0'
+implementation 'dev.toliyansky:evaluator-spring-boot-starter:1.2.1'
 ```
 
 2) Since execution of arbitrary code is a security breach, the bean with route will not be instantiated by default. 
@@ -62,7 +62,7 @@ _request body_ - string with a valid script
 
 ## WEB UI overview
 Dynamic usage example:
-![dynamic-method](https://i.ibb.co/JHGRTv6/dinamic-method.png)
+![dynamic-method](https://i.ibb.co/5h2DX56/dinamic-method.png)
 
 Simple groovy code example:
 ![groovy-operation](https://i.ibb.co/nBF5gR3/groovy-operation.png)

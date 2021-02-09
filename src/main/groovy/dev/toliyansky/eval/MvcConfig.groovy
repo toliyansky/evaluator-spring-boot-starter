@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
  */
 @Configuration
 @EnableWebMvc
-@ConditionalOnProperty(prefix = EvaluatorProperties.PREFIX, name = 'webUiEnabled', havingValue = 'true')
+@ConditionalOnProperty(prefix = EvaluatorProperties.PREFIX, name = 'web-ui-enabled', havingValue = 'true')
 class MvcConfig implements WebMvcConfigurer {
     @Override
     void addResourceHandlers(ResourceHandlerRegistry registry) {

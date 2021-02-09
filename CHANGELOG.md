@@ -1,3 +1,7 @@
+## [1.2.1] - 2021-02-09
+### Added
+- Fix: relax naming for webUiEnabled. Allow user set 'web-ui-enabled' instead 'webUiEnabled', and it will work.
+
 ## [1.2.0] - 2021-02-09
 ### Added
 - Highlight for yaml, xml
