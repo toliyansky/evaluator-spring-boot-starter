@@ -7,18 +7,24 @@ This spring-boot-starter facilitates the debugging of your deployed web applicat
 ## Requirements
 
 - Java 11+
-- Spring __WEB__ application
+- Spring boot __WEB__ application
 
 ## Configuration
 
-1) Add dependency in your project
+1) Add dependency in your project. [See versions on Maven Central.](https://search.maven.org/artifact/dev.toliyansky/evaluator-spring-boot-starter)
 
+For maven project: 
 ```xml
 <dependency>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
+```
+
+For gradle project:
+```groovy
+implementation 'dev.toliyansky:evaluator-spring-boot-starter:1.2.0'
 ```
 
 2) Since execution of arbitrary code is a security breach, the bean with route will not be instantiated by default. 
@@ -55,5 +61,11 @@ _request body_ - string with a valid script
 - UI with code and response highlight
 
 ## WEB UI overview
+Dynamic usage example:
+![dynamic-method](https://i.ibb.co/JHGRTv6/dinamic-method.png)
 
-![WEB-UI-IMAGE](https://i.ibb.co/gj5GtJH/Evaluator-spring-boot-starter.png)
+Simple groovy code example:
+![groovy-operation](https://i.ibb.co/nBF5gR3/groovy-operation.png)
+
+You can use Shell, Cmd or PowerShell for execute scripts in system context.
+![powershell](https://i.ibb.co/Wx0Psg4/powershell.png)
