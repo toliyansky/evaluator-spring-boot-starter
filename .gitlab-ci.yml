@@ -17,7 +17,7 @@ maven-build:
   stage: build
   script:
     - apt update
-    - apt install -y gnupg
+    - apt install -y gnupg ping
     - cat $MAVEN_SIGN | base64 -d >> /root/.m2/mvn_sign.key && gpg --batch --import /root/.m2/mvn_sign.key
     - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode
   artifacts:
@@ -31,7 +31,7 @@ deploy-to-sonatype:
   stage: deploy
   script:
     - apt update
-    - apt install -y gnupg
+    - apt install -y gnupg ping
     - cat $MAVEN_SIGN | base64 -d >> /root/.m2/mvn_sign.key && gpg --batch --import /root/.m2/mvn_sign.key
     - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn deploy --batch-mode
   artifacts:
