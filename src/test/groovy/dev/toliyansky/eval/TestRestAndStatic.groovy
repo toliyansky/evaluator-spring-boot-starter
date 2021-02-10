@@ -100,7 +100,7 @@ rm -rf pings
     void testShellGet() {
         assumeTrue(System.getProperty("os.name").toLowerCase().contains("linux"))
         def result = this.restTemplate.getForObject("http://localhost:${port}/eval/shell?code=${SHELL_SCRIPT}", String)
-        assertThat(result).contains("ping 0.0.0.0")
+        assertThat(result.toLowerCase()).contains("ping 0.0.0.0")
     }
 
     @Test
