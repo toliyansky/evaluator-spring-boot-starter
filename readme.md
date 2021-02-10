@@ -3,7 +3,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/dev.toliyansky/evaluator-spring-boot-starter.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22dev.toliyansky%22%20AND%20a:%22evaluator-spring-boot-starter%22)
 [![Pipeline Status](https://gitlab.com/toliyansky/evaluator-spring-boot-starter/badges/master/pipeline.svg)](https://gitlab.com/toliyansky/evaluator-spring-boot-starter/-/commits/master)
 [![codecov](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter/branch/master/graph/badge.svg?token=WP7GAC0AAQ)](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
