@@ -1,3 +1,12 @@
+## [1.2.2] - In progress
+### Added
+- JaCoCo plugin for check coverage
+- codecov.io integration. Add token and badge in readme
+- Maven Central badge
+- Pipeline status badge
+- License badge
+- Increase code coverage
+
 ## [1.2.1] - 2021-02-09
 ### Added
 - Fix: relax naming for webUiEnabled. Allow user set 'web-ui-enabled' instead 'webUiEnabled', and it will work.

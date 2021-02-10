@@ -72,6 +72,13 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <!-- Exclude windows only services from coverage report -->
+                                <exclude>**/*PowerShellService.*</exclude>
+                                <exclude>**/*CmdService.*</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
