@@ -1,5 +1,9 @@
 # Code evaluator for spring applications
 
+[![Maven Central](https://img.shields.io/maven-central/v/dev.toliyansky/evaluator-spring-boot-starter.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22dev.toliyansky%22%20AND%20a:%22evaluator-spring-boot-starter%22)
+[![Pipeline Statuc](https://gitlab.com/toliyansky/evaluator-spring-boot-starter/badges/master/pipeline.svg)](https://gitlab.com/toliyansky/evaluator-spring-boot-starter/-/commits/master)
+[![codecov](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter/branch/master/graph/badge.svg?token=WP7GAC0AAQ)](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter)
+
 ## Description
 
 This spring-boot-starter facilitates the debugging of your deployed web application. It allows you to execute arbitrary code in the context of your application or outside it via the web route.
