@@ -62,6 +62,18 @@ rm -rf pings
     }
 
     @Test
+    void testJavaEvalGet() {
+        def result = this.restTemplate.getForObject("http://localhost:${port}/eval/java?code=return=5*5", String)
+        assertThat(result).contains("25")
+    }
+
+    @Test
+    void testJavaEvalPost() {
+        ResponseEntity<String> result = this.restTemplate.postForEntity("http://localhost:${port}/eval/java", "return applicationContext", String)
+        assertThat(result.body).contains("webServer")
+    }
+
+    @Test
     void testGroovyEvalPostFailed() {
         ResponseEntity<String> result = this.restTemplate.postForEntity("http://localhost:${port}/eval/groovy", "qwerty", String)
         assertThat(result.body).contains("MissingPropertyException")
