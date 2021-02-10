@@ -20,6 +20,7 @@ maven-build:
     - apt install -y gnupg iputils-ping
     - cat $MAVEN_SIGN | base64 -d >> /root/.m2/mvn_sign.key && gpg --batch --import /root/.m2/mvn_sign.key
     - cat $MAVEN_SETTINGS_FILE | base64 -d >> /root/.m2/settings.xml && mvn install --batch-mode
+    - bash <(curl -s https://codecov.io/bash) -v
   artifacts:
     paths:
       - target/*
