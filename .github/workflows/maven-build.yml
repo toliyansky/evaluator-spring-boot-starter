@@ -14,8 +14,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Add PGP sign
-        run: cat $MAVEN_SIGN >> /root/.m2/mvn_sign.key && gpg --batch --import /root/.m2/mvn_sign.key
+        run: cat $MAVEN_SIGN >> ~/.m2/mvn_sign.key && gpg --batch --import ~/.m2/mvn_sign.key
       - name: Add maven settings.xml
-        run:  cat $MAVEN_SETTINGS_FILE >> /root/.m2/settings.xml && mvn install --batch-mode
+        run:  cat $MAVEN_SETTINGS_FILE >> ~/.m2/settings.xml && mvn install --batch-mode
       - name: Build with Maven
         run: mvn install --batch-mode
