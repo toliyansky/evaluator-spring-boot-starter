@@ -15,7 +15,7 @@
     <description>This spring-boot-starter facilitates the debugging of your deployed web application. It allows you to
         execute arbitrary code in the context of your application or outside it via the web route.
     </description>
-    <url>https://gitlab.com/toliyansky/evaluator-spring-boot-starter</url>
+    <url>https://github.com/AnatoliyKozlov/evaluator-spring-boot-starter</url>
     <properties>
         <java.version>11</java.version>
         <groovy.version>3.0.6</groovy.version>
@@ -164,7 +164,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://gitlab.com/toliyansky/evaluator-spring-boot-starter/-/raw/master/LICENSE</url>
+            <url>https://github.com/AnatoliyKozlov/evaluator-spring-boot-starter/blob/master/LICENSE</url>
         </license>
     </licenses>
 
@@ -172,10 +172,6 @@
         <developer>
             <name>Anatoliy Kozlov</name>
             <email>toliyansky@gmail.com</email>
-        </developer>
-        <developer>
-            <name>Viktor Frelikh</name>
-            <email>FrelVick@gmail.com</email>
         </developer>
     </developers>
 
