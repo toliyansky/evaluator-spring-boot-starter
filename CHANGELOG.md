@@ -3,7 +3,6 @@
 - JaCoCo plugin for check coverage
 - codecov.io integration. Add token and badge in readme
 - Maven Central badge
-- Pipeline status badge
 - License badge
 - Increase code coverage
 ### Changed

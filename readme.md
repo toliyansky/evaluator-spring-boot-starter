@@ -1,7 +1,8 @@
 # Code evaluator for spring applications
 
 [![Maven Central](https://img.shields.io/maven-central/v/dev.toliyansky/evaluator-spring-boot-starter.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22dev.toliyansky%22%20AND%20a:%22evaluator-spring-boot-starter%22)
-[![codecov](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter/branch/master/graph/badge.svg?token=WP7GAC0AAQ)](https://codecov.io/gl/toliyansky/evaluator-spring-boot-starter)
+[![codecov](https://codecov.io/github/AnatoliyKozlov/evaluator-spring-boot-starter/branch/master/graph/badge.svg?token=YNWDP1PBGR)](https://codecov.io/github/AnatoliyKozlov/evaluator-spring-boot-starter)
+[![Maintainability](https://api.codeclimate.com/v1/badges/673f4509d34da62878f5/maintainability)](https://codeclimate.com/github/AnatoliyKozlov/evaluator-spring-boot-starter/maintainability)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
