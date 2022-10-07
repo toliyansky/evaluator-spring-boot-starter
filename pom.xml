@@ -74,6 +74,9 @@
                         </goals>
                         <configuration>
                             <excludes>
+                                <exclude>**/*MvcConfig.*</exclude>
+                                <exclude>**/*EvaluatorProperties.*</exclude>
+                                <exclude>**/*EvalAutoConfiguration.*</exclude>
                                 <!-- Exclude windows only services from coverage report -->
                                 <exclude>**/*PowerShellService.*</exclude>
                                 <exclude>**/*CmdService.*</exclude>
