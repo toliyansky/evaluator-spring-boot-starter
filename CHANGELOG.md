@@ -6,6 +6,7 @@
 - Pipeline status badge
 - License badge
 - Increase code coverage
+### Changed
 - Migrate pipeline from GitLab to GitHub
 
 ## [1.2.1] - 2021-02-09
