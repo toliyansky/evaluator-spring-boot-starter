@@ -116,36 +116,46 @@ document.getElementById('eval-button').onclick = function () {
     });
 }
 
-function checkResponseTypeTextAndSetMode (data) {
+function checkResponseTypeTextAndSetMode(data) {
     loadingSpinner.style.display = 'none';
     resultViewer.setValue(data);
+
+    if (checkJSON(data) || checkYAML(data) || checkXML(data)) {
+        resultViewer.clearSelection();
+    } else {
+        resultViewer.session.setMode("ace/mode/text");
+    }
+}
+
+function checkJSON(data) {
     try {
         let jsonData = JSON.parse(data);
         resultViewer.session.setMode("ace/mode/json");
         let formattedText = JSON.stringify(jsonData, null, '\t');
         resultViewer.setValue(formattedText);
-    } catch (e) {
-        try {
-            let yamlData = jsyaml.load(data);
-            if (typeof yamlData === 'string') {
-                throw "type of data not yaml";
-            }
-            resultViewer.session.setMode("ace/mode/yaml");
-        } catch (e) {
-            try {
-                let domParser = new DOMParser();
-                let xmlData = domParser.parseFromString(data, 'text/xml');
-                if (xmlData.getElementsByTagName('parsererror').length) {
-                    throw "type of data not xml";
-                }
-                resultViewer.session.setMode("ace/mode/xml");
-            } catch (e) {
-                resultViewer.session.setMode("ace/mode/text");
-            }
-        }
-    } finally {
-        resultViewer.clearSelection();
+        return true;
+    } catch {
+        return false;
     }
+}
+
+function checkYAML(data) {
+    let yamlData = jsyaml.load(data);
+    if (typeof yamlData === 'string') {
+        return false;
+    }
+    resultViewer.session.setMode("ace/mode/yaml");
+    return true;
+}
+
+function checkXML(data) {
+    let domParser = new DOMParser();
+    let xmlData = domParser.parseFromString(data, 'text/xml');
+    if (xmlData.getElementsByTagName('parsererror').length) {
+        return false;
+    }
+    resultViewer.session.setMode("ace/mode/xml");
+    return true;
 }
 
 document.getElementById('help-button').onclick = function () {
