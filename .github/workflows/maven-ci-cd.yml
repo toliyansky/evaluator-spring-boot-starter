@@ -21,6 +21,14 @@ jobs:
         run: mvn install --batch-mode
       - uses: codecov/codecov-action@v3
       - uses: paambaati/codeclimate-action@v2.5.7
+        env:
+          CC_TEST_REPORTER_ID: ${{s ecrets.CC_TEST_REPORTER_ID }}
+          JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
+        with:
+          coverageCommand: mvn test
+          coverageLocations: |
+            ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
+            ${{github.workspace}}/target/site/jacoco/jacoco2.xml:jacoco
       - name: Deploy to Sonatype
         if: github.ref == 'refs/heads/release'
         run: mvn deploy --batch-mode
