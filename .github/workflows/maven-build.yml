@@ -14,8 +14,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Add GPG sign
-        run: cat ${{ secrets.MAVEN_SIGN }} | base64 -d >> ~/.m2/mvn_sign.key && gpg --batch --import ~/.m2/mvn_sign.key
+        run: echo ${{ secrets.MAVEN_SIGN }} | base64 -d >> ~/.m2/mvn_sign.key && gpg --batch --import ~/.m2/mvn_sign.key
       - name: Add maven settings.xml
-        run:  cat ${{ secrets.MAVEN_SETTINGS_FILE }} | base64 -d >> ~/.m2/settings.xml && mvn install --batch-mode
+        run:  echo ${{ secrets.MAVEN_SETTINGS_FILE }} | base64 -d >> ~/.m2/settings.xml && mvn install --batch-mode
       - name: Build with Maven
         run: mvn install --batch-mode
