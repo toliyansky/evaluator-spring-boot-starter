@@ -16,6 +16,9 @@ jobs:
       - name: Add GPG sign
         run: echo ${{ secrets.MAVEN_SIGN }} | base64 -d > ~/.m2/mvn_sign.key && gpg --batch --import ~/.m2/mvn_sign.key
       - name: Add maven settings.xml
-        run: echo ${{ secrets.MAVEN_SETTINGS_FILE }} | base64 -d > ~/.m2/settings.xml && mvn install --batch-mode
+        run: echo ${{ secrets.MAVEN_SETTINGS_FILE }} | base64 -d > ~/.m2/settings.xml
       - name: Build with Maven
         run: mvn install --batch-mode
+      - name: Deploy to Sonatype
+        if: github.ref == 'refs/heads/release'
+        run: mvn deploy --batch-mode
