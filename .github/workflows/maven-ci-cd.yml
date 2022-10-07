@@ -26,8 +26,7 @@ jobs:
           JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
         with:
           coverageCommand: mvn test
-          coverageLocations: |
-            ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
+          coverageLocations: ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
       - name: Deploy to Sonatype
         if: github.ref == 'refs/heads/release'
         run: mvn deploy --batch-mode
