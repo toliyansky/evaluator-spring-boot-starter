@@ -188,31 +188,30 @@ document.getElementById('lang-select').onchange = function () {
 
 function replaceHelpMessages(isNeedAddNewExample) {
     let currentText = editor.getValue();
-    EXAMPLES.forEach(function (example, i) {
+    EXAMPLES.forEach(function (example) {
         currentText = currentText.replaceAll(example, "");
     });
     if (isNeedAddNewExample) {
-        switch (currentEditorLang) {
-            case 'groovy':
-                currentText = GROOVY_EXAMPLE_TEXT + currentText;
-                break;
-            case 'java':
-                currentText = JAVA_EXAMPLE_TEXT + currentText;
-                break;
-            case 'shell':
-                currentText = SHELL_EXAMPLE_TEXT + currentText;
-                break;
-            case 'cmd':
-                currentText = CMD_EXAMPLE_TEXT + currentText;
-                break;
-            case 'powershell':
-                currentText = POWERSHELL_EXAMPLE_TEXT + currentText;
-                break;
-            default:
-                console.log()
-        }
+        currentText = addExampleText(currentText);
     }
     editor.setValue(currentText);
     editor.clearSelection();
     editor.moveCursorTo(0, 0);
+}
+
+function addExampleText(text) {
+    switch (currentEditorLang) {
+        case 'groovy':
+            return  GROOVY_EXAMPLE_TEXT + text;
+        case 'java':
+            return text = JAVA_EXAMPLE_TEXT + text;
+        case 'shell':
+            return text = SHELL_EXAMPLE_TEXT + text;
+        case 'cmd':
+            return text = CMD_EXAMPLE_TEXT + text;
+        case 'powershell':
+            return text = POWERSHELL_EXAMPLE_TEXT + text;
+        default:
+            return text;
+    }
 }
