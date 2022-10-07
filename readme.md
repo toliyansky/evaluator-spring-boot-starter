@@ -22,13 +22,13 @@ For maven project:
 <dependency>
     <groupId>dev.toliyansky</groupId>
     <artifactId>evaluator-spring-boot-starter</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
 </dependency>
 ```
 
 For gradle project:
 ```groovy
-implementation 'dev.toliyansky:evaluator-spring-boot-starter:1.2.1'
+implementation 'dev.toliyansky:evaluator-spring-boot-starter:1.2.2'
 ```
 
 2) Since execution of arbitrary code is a security breach, the bean with route will not be instantiated by default. 
