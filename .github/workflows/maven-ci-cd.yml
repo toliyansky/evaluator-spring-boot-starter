@@ -28,7 +28,6 @@ jobs:
           coverageCommand: mvn test
           coverageLocations: |
             ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
-            ${{github.workspace}}/target/site/jacoco/jacoco2.xml:jacoco
       - name: Deploy to Sonatype
         if: github.ref == 'refs/heads/release'
         run: mvn deploy --batch-mode
