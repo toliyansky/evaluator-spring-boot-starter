@@ -109,39 +109,43 @@ document.getElementById('eval-button').onclick = function () {
         loadingSpinner.style.display = 'none';
         return response.text();
     }).then(function (data) {
-        loadingSpinner.style.display = 'none';
-        resultViewer.setValue(data);
-        try {
-            let jsonData = JSON.parse(data);
-            resultViewer.session.setMode("ace/mode/json");
-            let formattedText = JSON.stringify(jsonData, null, '\t');
-            resultViewer.setValue(formattedText);
-        } catch (e) {
-            try {
-                let yamlData = jsyaml.load(data);
-                if (typeof yamlData === 'string') {
-                    throw "type of data not yaml";
-                }
-                resultViewer.session.setMode("ace/mode/yaml");
-            } catch (e) {
-                try {
-                    let domParser = new DOMParser();
-                    let xmlData = domParser.parseFromString(data, 'text/xml');
-                    if (xmlData.getElementsByTagName('parsererror').length) {
-                        throw "type of data not xml";
-                    }
-                    resultViewer.session.setMode("ace/mode/xml");
-                } catch (e) {
-                    resultViewer.session.setMode("ace/mode/text");
-                }
-            }
-        } finally {
-            resultViewer.clearSelection();
-        }
+        checkResponseTypeTextAndSetMode(data);
     }).catch(function () {
         loadingSpinner.style.display = 'none';
         console.log("Error while handle request");
     });
+}
+
+function checkResponseTypeTextAndSetMode (data) {
+    loadingSpinner.style.display = 'none';
+    resultViewer.setValue(data);
+    try {
+        let jsonData = JSON.parse(data);
+        resultViewer.session.setMode("ace/mode/json");
+        let formattedText = JSON.stringify(jsonData, null, '\t');
+        resultViewer.setValue(formattedText);
+    } catch (e) {
+        try {
+            let yamlData = jsyaml.load(data);
+            if (typeof yamlData === 'string') {
+                throw "type of data not yaml";
+            }
+            resultViewer.session.setMode("ace/mode/yaml");
+        } catch (e) {
+            try {
+                let domParser = new DOMParser();
+                let xmlData = domParser.parseFromString(data, 'text/xml');
+                if (xmlData.getElementsByTagName('parsererror').length) {
+                    throw "type of data not xml";
+                }
+                resultViewer.session.setMode("ace/mode/xml");
+            } catch (e) {
+                resultViewer.session.setMode("ace/mode/text");
+            }
+        }
+    } finally {
+        resultViewer.clearSelection();
+    }
 }
 
 document.getElementById('help-button').onclick = function () {
