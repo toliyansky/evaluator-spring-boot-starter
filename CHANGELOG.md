@@ -1,4 +1,4 @@
-## [1.2.2] - In progress
+## [1.2.2] - 2022-10-08
 ### Added
 - JaCoCo plugin for check coverage
 - codecov.io integration. Add token and badge in readme
