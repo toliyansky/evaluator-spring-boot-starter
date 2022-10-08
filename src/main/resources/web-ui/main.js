@@ -109,39 +109,53 @@ document.getElementById('eval-button').onclick = function () {
         loadingSpinner.style.display = 'none';
         return response.text();
     }).then(function (data) {
-        loadingSpinner.style.display = 'none';
-        resultViewer.setValue(data);
-        try {
-            let jsonData = JSON.parse(data);
-            resultViewer.session.setMode("ace/mode/json");
-            let formattedText = JSON.stringify(jsonData, null, '\t');
-            resultViewer.setValue(formattedText);
-        } catch (e) {
-            try {
-                let yamlData = jsyaml.load(data);
-                if (typeof yamlData === 'string') {
-                    throw "type of data not yaml";
-                }
-                resultViewer.session.setMode("ace/mode/yaml");
-            } catch (e) {
-                try {
-                    let domParser = new DOMParser();
-                    let xmlData = domParser.parseFromString(data, 'text/xml');
-                    if (xmlData.getElementsByTagName('parsererror').length) {
-                        throw "type of data not xml";
-                    }
-                    resultViewer.session.setMode("ace/mode/xml");
-                } catch (e) {
-                    resultViewer.session.setMode("ace/mode/text");
-                }
-            }
-        } finally {
-            resultViewer.clearSelection();
-        }
+        checkResponseTypeTextAndSetMode(data);
     }).catch(function () {
         loadingSpinner.style.display = 'none';
         console.log("Error while handle request");
     });
+}
+
+function checkResponseTypeTextAndSetMode(data) {
+    loadingSpinner.style.display = 'none';
+    resultViewer.setValue(data);
+
+    if (checkJSON(data) || checkYAML(data) || checkXML(data)) {
+        resultViewer.clearSelection();
+    } else {
+        resultViewer.session.setMode("ace/mode/text");
+    }
+}
+
+function checkJSON(data) {
+    try {
+        let jsonData = JSON.parse(data);
+        resultViewer.session.setMode("ace/mode/json");
+        let formattedText = JSON.stringify(jsonData, null, '\t');
+        resultViewer.setValue(formattedText);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+function checkYAML(data) {
+    let yamlData = jsyaml.load(data);
+    if (typeof yamlData === 'string') {
+        return false;
+    }
+    resultViewer.session.setMode("ace/mode/yaml");
+    return true;
+}
+
+function checkXML(data) {
+    let domParser = new DOMParser();
+    let xmlData = domParser.parseFromString(data, 'text/xml');
+    if (xmlData.getElementsByTagName('parsererror').length) {
+        return false;
+    }
+    resultViewer.session.setMode("ace/mode/xml");
+    return true;
 }
 
 document.getElementById('help-button').onclick = function () {
@@ -174,31 +188,30 @@ document.getElementById('lang-select').onchange = function () {
 
 function replaceHelpMessages(isNeedAddNewExample) {
     let currentText = editor.getValue();
-    EXAMPLES.forEach(function (example, i) {
+    EXAMPLES.forEach(function (example) {
         currentText = currentText.replaceAll(example, "");
     });
     if (isNeedAddNewExample) {
-        switch (currentEditorLang) {
-            case 'groovy':
-                currentText = GROOVY_EXAMPLE_TEXT + currentText;
-                break;
-            case 'java':
-                currentText = JAVA_EXAMPLE_TEXT + currentText;
-                break;
-            case 'shell':
-                currentText = SHELL_EXAMPLE_TEXT + currentText;
-                break;
-            case 'cmd':
-                currentText = CMD_EXAMPLE_TEXT + currentText;
-                break;
-            case 'powershell':
-                currentText = POWERSHELL_EXAMPLE_TEXT + currentText;
-                break;
-            default:
-                console.log()
-        }
+        currentText = addExampleText(currentText);
     }
     editor.setValue(currentText);
     editor.clearSelection();
     editor.moveCursorTo(0, 0);
+}
+
+function addExampleText(text) {
+    switch (currentEditorLang) {
+        case 'groovy':
+            return  GROOVY_EXAMPLE_TEXT + text;
+        case 'java':
+            return text = JAVA_EXAMPLE_TEXT + text;
+        case 'shell':
+            return text = SHELL_EXAMPLE_TEXT + text;
+        case 'cmd':
+            return text = CMD_EXAMPLE_TEXT + text;
+        case 'powershell':
+            return text = POWERSHELL_EXAMPLE_TEXT + text;
+        default:
+            return text;
+    }
 }
